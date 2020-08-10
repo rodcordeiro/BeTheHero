@@ -8,7 +8,7 @@
 
 ![](https://img.shields.io/static/v1?label=Mobile&message=React%20Native&color=lightblue&style=for-the-badge&logo=React)
 
-[![badge](https://img.shields.io/static/v1?label=APK&message=Install%20the%20app&color=blue&style=for-the-badge&logo=Android)](https://go.aws/3bLvZgC)
+[![badge](https://img.shields.io/static/v1?label=APK&message=Install%20the%20app&color=blue&style=for-the-badge&logo=Android)](https://expo.io/artifacts/3d8ac576-8e82-4eea-82d4-cf16f0f24ad4)
 
 A project where NGOs can register, then publish cases where the users can help financially. The technology used on this project is:
  
