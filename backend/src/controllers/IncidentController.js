@@ -3,19 +3,19 @@ module.exports = {
   async index(req, res){
     const { page = 1} = req.query;
     
-    const [count] = await connection('incidents').count();
+    const [count] = await connection('bth_incidents').count();
     
-    const incidents = await connection('incidents')
-      .join('ongs', 'ongs.id','=','incidents.ong_id')
+    const incidents = await connection('bth_incidents')
+      .join('bth_ongs', 'bth_ongs.id','=','bth_incidents.ong_id')
       .limit(5)
       .offset((page-1)*5)
       .select([
         'incidents.*',
-        'ongs.name',
-        'ongs.email',
-        'ongs.whatsapp',
-        'ongs.city',
-        'ongs.uf'
+        'bth_ongs.name',
+        'bth_ongs.email',
+        'bth_ongs.whatsapp',
+        'bth_ongs.city',
+        'bth_ongs.uf'
     ]);
       
     res.header('X-TOTAL-COUNT', count['count(*)']);
@@ -25,7 +25,7 @@ module.exports = {
     const { title, description, value} = req.body;
     const ong_id = req.headers.authorization;
 
-    const [id] = await connection('incidents').insert({
+    const [id] = await connection('bth_incidents').insert({
       title, description, value, ong_id
     });
     return res.json({ id });
@@ -34,7 +34,7 @@ module.exports = {
     const { id } = req.params;
     const ong_id = req.headers.authorization;
 
-    const incident = await connection('incidents')
+    const incident = await connection('bth_incidents')
       .where('id',id)
       .select('ong_id')
       .first();
@@ -43,7 +43,7 @@ module.exports = {
       return res.status(401).json({error:"Operation not authorized"});
     };
 
-    await connection('incidents').where('id',id).delete();
+    await connection('bth_incidents').where('id',id).delete();
     return res.status(204).send();
 
   }

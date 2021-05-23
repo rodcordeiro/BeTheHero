@@ -10,6 +10,7 @@ import './styles.css';
 export default function Register(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, SetPassword] = useState('');
     const [number, setNumber] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
@@ -21,6 +22,7 @@ export default function Register(){
         const data = {
             name,
             email,
+            password,
             number,
             city,
             uf,
@@ -60,6 +62,11 @@ export default function Register(){
                         type='email'
                         value={email}
                         onChange={e => setEmail(e.target.value)}/>
+                    <input 
+                        placeholder='Senha'
+                        type='password'
+                        value={password}
+                        onChange={e => SetPassword(e.target.value)}/>
                     <input 
                         placeholder='Whatsapp'
                         value={number}
