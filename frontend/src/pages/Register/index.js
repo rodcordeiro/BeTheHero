@@ -29,7 +29,7 @@ export default function Register(){
         }
 
         try {
-            const response =  await api.post('ongs',data);
+            const response =  await api.post('bth/ongs',data);
             alert(`Seu ID de acesso é: ${response.data.id}`);
             history.push('/');
         } catch (err) {
