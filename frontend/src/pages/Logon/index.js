@@ -9,16 +9,18 @@ import heroesImg from '../../assets/heroes.png';
 import logoImg from '../../assets/logo.svg';
 
 export default function Logon(){
-    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     
     const history = useHistory();
 
     async function handleLogin(e){
         e.preventDefault();
         try {
-            const response = await api.post('sessions', { id });
-            localStorage.setItem('ongId',id);
-            localStorage.setItem('ongName', response.data.name);
+            const response = await api.post('/bth/session', { email,password});
+            localStorage.setItem('ongId',response.data.Ong.id);
+            localStorage.setItem('user_token',response.data.user.token);
+            localStorage.setItem('ongName', response.data.Ong.name);
             history.push('/profile');
         } catch (err) {
             alert(err.message);
@@ -33,9 +35,16 @@ export default function Logon(){
                     <h1>Faça seu logon</h1>
 
                     <input 
-                        placeholder='Sua id'
-                        value={id}
-                        onChange={e => setId(e.target.value)}
+                        placeholder='Email'
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <input 
+                        placeholder='Senha'
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                     <button type='submit' className='button'>Entrar</button>
 

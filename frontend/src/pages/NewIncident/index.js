@@ -11,7 +11,8 @@ export default function NewIncident(){
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [value, setValue] = useState();
-    const ongId = localStorage.getItem('ongId');
+    const ong_id = localStorage.getItem('ongId');
+    const token = localStorage.getItem('user_token');
 
     const history = useHistory();
     async function handleNewIncident(e){
@@ -23,14 +24,16 @@ export default function NewIncident(){
             value
         }
         try{
-          await api.post('incidents', data,{
-              headers:{
-                  Authorization: ongId,
-              }
+          await api.post('/bth/incidents', data,{
+              headers: {
+                ong_id,
+                token
+            }
           })
           history.push('/profile');
         } catch(err){
-
+            console.log(err)
+            alert("Erro ao criar. Por favor, tente novamente mais tarde")
         }
     }
 

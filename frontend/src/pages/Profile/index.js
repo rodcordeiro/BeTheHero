@@ -3,6 +3,7 @@ import {Link, useHistory} from 'react-router-dom';
 import logoImg from '../../assets/logo.svg';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
+
 import api from '../../services/api';
 import './styles.css';
 
@@ -11,24 +12,27 @@ export default function Profile(){
     
     const history = useHistory();
 
-    const ongId = localStorage.getItem('ongId');
+    const ong_id = localStorage.getItem('ongId');
+    const token = localStorage.getItem('user_token');
     const ongName = localStorage.getItem('ongName');
 
     useEffect(() => {
-        api.get('profile',{
+        api.get('/bth/profile',{
             headers: {
-                Authorization: ongId,
+                ong_id,
+                token
             }
         }).then(response => {
             setIncidents(response.data);
         })
-    }, [ongId]);
+    }, [ong_id,token]);
 
     async function handleDeleteIncident(id){
         try{
-            await api.delete(`incidents/${id}`,{
+            await api.delete(`/bth/incidents/${id}`,{
                 headers: {
-                    Authorization: ongId,
+                    ong_id,
+                    token
                 }
             });
             setIncidents(incidents.filter(incident => incident.id !== id));

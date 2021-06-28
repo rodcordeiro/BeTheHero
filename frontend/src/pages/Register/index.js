@@ -10,7 +10,7 @@ import './styles.css';
 export default function Register(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, SetPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [number, setNumber] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
@@ -29,11 +29,11 @@ export default function Register(){
         }
 
         try {
-            const response =  await api.post('bth/ongs',data);
-            alert(`Seu ID de acesso é: ${response.data.id}`);
+            const response =  await api.post('/bth/ongs',data);
+            console.log(response)
             history.push('/');
         } catch (err) {
-            alert('Erro no cadastro, tente novamente.');
+            alert(`Erro ${err} no cadastro, tente novamente por favor`);
         }
 
     }
@@ -66,7 +66,7 @@ export default function Register(){
                         placeholder='Senha'
                         type='password'
                         value={password}
-                        onChange={e => SetPassword(e.target.value)}/>
+                        onChange={e => setPassword(e.target.value)}/>
                     <input 
                         placeholder='Whatsapp'
                         value={number}
