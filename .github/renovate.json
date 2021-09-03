@@ -1,5 +1,6 @@
 {
-  "extends": [
+ "branchPrefix": "updates/",
+     "extends": [
     "github>rodcordeiro/.github:renovate"
   ]
 }
