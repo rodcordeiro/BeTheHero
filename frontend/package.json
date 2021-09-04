@@ -8,8 +8,8 @@
     "@testing-library/user-event": "7.2.1",
     "axios": "0.21.1",
     "pg": "7.18.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-icons": "3.11.0",
     "react-router-dom": "5.1.2",
     "react-scripts": "4.0.3"
