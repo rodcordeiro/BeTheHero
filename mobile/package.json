@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.11",
-    "@react-navigation/native": "5.9.8",
-    "@react-navigation/stack": "5.14.9",
+    "@react-navigation/native": "6.0.2",
+    "@react-navigation/stack": "6.0.7",
     "axios": "0.21.4",
     "expo": "41.0.1",
     "expo-constants": "10.1.3",
